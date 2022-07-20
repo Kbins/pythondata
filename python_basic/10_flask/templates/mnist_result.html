@@ -1,0 +1,19 @@
+{% extends 'base.html' %}
+{% block body %}
+    <div class="container">
+        <br><br>
+        <div class="card">
+            <div class="card-header">
+              인식 결과
+            </div>
+            <div class="card-body">
+              <h5 class="card-title">이미지 인식 결과는?</h5>
+              <p>
+                <img src="./static/upload/{{path}}">
+              </p>
+              <p class="card-text">{{data}}</p>
+              <a href="#" class="btn btn-primary">Go somewhere</a>
+            </div>
+          </div>
+    </div>
+{% endblock %}

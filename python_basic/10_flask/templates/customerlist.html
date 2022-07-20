@@ -1,0 +1,32 @@
+{% extends 'base.html' %}
+{% block body%}
+<div class="container">
+    <br/><br/>
+    <table class="table table-hover">
+        <thred>
+            <tr>
+                <th scope="col">회원 정보</th>
+                <th value="name">Name</th>
+                <th value="email">Email</th>
+                <th value="tel">Tel</th>
+                <th value="address">Address</th>
+                <th value="gender">Gender</th>
+            </tr>
+        </thred>
+
+        <thred>
+            {%for i in data%}
+            <tr>
+                <th scope="col"><input type="button" value="수정"><input type="button" value="삭제" ></th>
+                <th value="name">{{i[0]}}</th>
+                <th value="email">{{i[1]}}</th>
+                <th value="tel">{{i[2]}}</th>
+                <th value="address">{{i[3]}}</th>
+                <th value="birth">{{i[4]}}</th>
+            </tr>
+            {% endfor %}
+        </thred>
+    </table>
+</div>
+
+{% endblock%}
