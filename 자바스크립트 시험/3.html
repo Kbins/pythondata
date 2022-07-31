@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+ <head>
+  <meta charset="UTF-8">
+
+	<style>
+
+		label, #result{
+			font-size:40px;
+		}
+
+		input{
+			width:30px;
+			height:30px;
+			border-radius:10px;
+		}
+
+	</style>
+
+	<script>
+
+		/*
+			문제 3      -   15점
+			아래의 배열 데이터는 각 index별로 일치하는 데이터입니다.
+			즉 박치여 - male
+				.....
+			   신정인 - female
+			처럼 ...
+
+			주어진 배열 데이터를 활용하여 남자를 선택하면 남자학생의 데이터가
+			여자를 선택하면 여자학생의 데이터가
+
+			아래의 id = result에 표시되도록 구현하세요
+
+		*/
+
+		let studentNames = [];
+		let genders = [];
+
+		studentNames[0] = "박치여";
+		studentNames[1] = "김기일";
+		studentNames[2] = "김영수";
+		studentNames[3] = "도지연";
+		studentNames[4] = "신정인";
+
+		genders[0] = "male";
+		genders[1] = "male";
+		genders[2] = "male";
+		genders[3] = "female";
+		genders[4] = "female";
+
+let strHTML = "";
+
+let getMa = function(){
+    strHTML ="";
+	for(let i=0; i < studentNames.length; i++){
+		
+		if(genders[i] == "male"){
+		strHTML += studentNames[i]+"-"+genders[i]+"</br>";
+		}
+	}
+	document.getElementById("result").innerHTML = strHTML;
+}
+
+let getFe = function(){
+	strHTML ="";
+	for(let i=0; i < studentNames.length; i++){
+		
+		if(genders[i] == "female"){
+		strHTML += studentNames[i]+"-"+genders[i]+"</br>";
+		}
+	}
+	document.getElementById("result").innerHTML = strHTML;
+}
+
+
+	</script>
+
+  <title>프론트앤드 시험문제 3</title>
+ </head>
+ <body>
+	<div>
+		<label><input type="radio" name="chkGender" onclick="getMa();"/> 남자 <label>
+		<label><input type="radio" name="chkGender" onclick="getFe();"/> 여자 <label>
+	</div>
+	<div id="result">
+
+	<div>
+
+ </body>
+</html>

@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+ <head>
+  <meta charset="UTF-8">
+
+	<style>
+		input, #result{
+			font-size:30px;
+		}
+	</style>
+
+	<script>
+
+		/*
+			문제 5      15점
+ 
+			다음과 같은 기능을 수행하는 함수를 각각 3개 만들어주세요
+		
+			1. 3개의 숫자값을 주면 3개의 합을 구하는 함수
+			2. 3개의 문자값을 주면 3개의 문자를 모두 합하여 주는 함수
+			3. n개의 숫자를 주면 n개의 값중에 홀수번째의 값만의 합을 구하는 함수
+
+			3개의 함수를 완성시키고
+			아래의 각 1, 2, 3 번 함수를 실행하는 버튼을 누르면
+			해당 함수가 실행되어 id="result"에 출력되게 해 주세요
+
+		*/
+// 1. 3개의 숫자값을 주면 3개의 합을 구하는 함수
+	let plusFunc = function(number1,number2,number3){
+		
+		return number1+number2+number3;
+	}
+
+	let sumFunc = function(){
+		
+			let number1 = parseInt(4);
+			let number2 = parseInt(6);
+			let number3 = parseInt(12);
+			
+		
+	document.getElementById("result").innerHTML = plusFunc(number1,number2,number3);
+	}
+
+//////////////////////////////////////////////////////////////////////////////////////
+
+//2. 3개의 문자값을 주면 3개의 문자를 모두 합하여 주는 함수
+	let plusName = function(name1,name2,name3){
+		
+		return name1+name2+name3;
+	}
+
+	let sumName = function(){
+		
+			let name1 = "철수야~";
+			let name2 = "영희야~";
+			let name3 = "안녕!";
+			
+		
+	document.getElementById("result").innerHTML = plusName(name1,name2,name3);
+	}
+////////////////////////////////////////////////////////////////////////////////
+
+//3. n개의 숫자를 주면 n개의 값중에 홀수번째의 값만의 합을 구하는 함수
+
+	let croSum = function (name1, name2, name3, name4, name5, name6, name7){
+		
+		return name1*name2*name3*name4*name5*name6*name7;
+	}
+
+	let  crofunc= function(){
+		
+			let name1 = 1;
+			let name2 = 5;
+			let name3 = 12;
+			let name4 = 11;
+			let name5 = 56;
+			let name6 = 12;
+			let name7 = 45;
+
+	document.getElementById("result").innerHTML = croSum(name1, name2, name3, name4, name5, name6, name7);
+	}
+	</script>
+
+
+
+  <title>프론트앤드 시험문제 5</title>
+ </head>
+ <body>
+  
+    <div >
+		<input type="text" value="4, 6, 12" readonly/>
+		<input type="button" value="1번함수 실행" onclick="sumFunc()"/>
+	</div>
+	<div>
+		<input type="text" value="철수야, 영희야, 안녕" readonly/>
+		<input type="button" value="2번함수 실행" onclick="sumName()"/>
+	</div>
+	<div>
+		<input type="text" value="1, 5, 12, 11, 56, 12, 45" readonly/>
+		<input type="button" value="3번함수 실행" onclick="crofunc()"/>
+	</div>
+	<div id="result">
+
+	</div>
+	
+
+ </body>
+</html>

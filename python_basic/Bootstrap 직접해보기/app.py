@@ -19,6 +19,7 @@ def inputform():
         conn = sqlite3.connect(path+'/signup.db')
         cur = conn.cursor()
         cur.execute('''create table if not exists signup(
+                        num integer,
                         name text,
                         email text,
                         tel text,
@@ -27,8 +28,8 @@ def inputform():
                         gender text
                     )''')
         conn.commit()
-        data=[request.form['name'],request.form['email'],request.form['tel'],request.form['address'],request.form['birth'],request.form['gender']]
-        cur.execute('insert into signup values (?,?,?,?,?,?)',data)
+        data=[request.form['num'],request.form['name'],request.form['email'],request.form['tel'],request.form['address'],request.form['birth'],request.form['gender']]
+        cur.execute('insert into signup values (?,?,?,?,?,?,?)',data)
         conn.commit()
         conn.close()
         return redirect('/')
@@ -41,15 +42,21 @@ def signuplist():
         data = cur.fetchall()
         return render_template('signuplist.html', data=data)
 
-@app.route('/signuplist')
-def delsignuplist():
+@app.route('/delsignuplist', methods=['GET','POST'])
+def delsignuplist(num):
         conn = sqlite3.connect(path+'/signup.db')
         cur = conn.cursor()
-        sql=f'delete from signup where name like "%?%"'
-        cur.execute(sql,)
-        cur.execute('select * from signup order by name')
-        cur.commit()
-        data = cur.fetchall()
+
+        for i in data:
+            if i ==num :
+                cur.execute('delete from signup where name = ?',(num,))
+                data = cur.fetchall()
+            else:
+                pass
+
+        conn.commit()
+        conn.close()
+
         return render_template('signuplist.html', data=data)
 
 

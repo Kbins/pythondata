@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+ <head>
+  <meta charset="UTF-8">
+	<style>
+		#result{
+			font-size:30px;
+		}
+	</style>
+	<script>
+
+		/*
+			프론트앤드 시험문제 1  - 10점
+
+			100 - (1 + 3 + 5 + 7 + 9) = ??
+
+			위의 계산식을 계산하고 아래의 id=result에 결과값을 보여주세요
+			단 위의 식이 모두 화면에 출력 되어져야 합니다.
+		*/
+		
+	</script>
+
+  <title>프론트앤드 시험문제 1</title>
+ </head>
+ <body>
+	<div id="result">
+
+	</div>
+	<script>
+			let num = 100;
+			let sum = 0;
+			let strHTML ="";
+			strHTML= num+"-(";
+			for (i=1; i<=10 ;i++ )
+			{	
+				
+				if(i % 2 !=0){
+					if(i!=9){
+						strHTML += i+"+";
+						sum +=i;
+
+					}
+					else{
+						strHTML += i+")=";
+						sum += i;
+					}
+				} 			
+	
+			}
+
+			strHTML += num-sum;	
+
+
+		document.getElementById('result').innerHTML += strHTML;
+
+
+			/*
+
+			strHTML += 100+ "-" +"("+nums.join("+")+")";
+
+			*/
+	</script>
+ </body>
+</html>

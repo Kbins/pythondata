@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="en">
+ <head>
+  <meta charset="UTF-8">
+
+	<style>
+
+		.row{
+			clear:both;
+			width:1200px;
+		}
+		.col{
+			width:100px;
+			padding:10px 0px 10px 0px;
+			display:block;
+			border:1px solid #333;
+			color:#444;
+			background-color:#eee;
+			float:left;
+			text-align:center;
+			font-size:20px;
+		}
+
+	</style>
+
+	<script>
+
+		/*
+			문제 6  -      20점
+			아래의 데이터는 시험결과 데이터 입니다.
+			순서대로  아이디, 이름, 국어, 수학, 영어, 과학, 성별
+			데이터입니다.
+
+			아래의 데이터를 id=scoreList 에 리스트로 보여주세요
+			단 리스트는
+			아이디, 이름, 국어, 수학, 영어, 과학, 성별, 총점, 평균으로 
+			보여주세요
+
+			그리고 각 학생의 이름을 클릭하면
+			id="result" 에 합격여부를 알려주세요
+
+			평균이 60점 이상이면 합격이며, 한과목이라도 40점 미만이면 안됩니다.
+		*/
+
+		let datas = [
+			{number:"001", name:"김갑수", kor:78, math:67, eng:70, sci:80, gender:"M"},
+			{number:"002", name:"박길자", kor:58, math:47, eng:90, sci:90, gender:"F"},
+			{number:"003", name:"최수연", kor:67, math:51, eng:90, sci:40, gender:"F"},
+			{number:"004", name:"이자연", kor:90, math:87, eng:30, sci:70, gender:"F"},
+			{number:"005", name:"경수직", kor:45, math:33, eng:68, sci:45, gender:"M"}
+		];
+
+		let resultMsgs = ["축하 합격", "과락", "60점미만"];
+
+		let eachScores = [];
+
+		let setList = function(){
+
+			let listHTML = "";
+			let gender = "";
+			let sumScore = 0;
+			let avgScore = 0;
+			let objResult = null;
+			let passMsg = "";
+			for(let i=0;i<datas.length;i++){
+
+				gender = (datas[i].gender == "M") ? "남자":"여자";
+
+				//sumScore = datas[i].kor + datas[i].math + datas[i].eng + datas[i].sci;
+				//avgScore = sumScore / 4;
+
+				eachScores[0] = datas[i].kor;
+				eachScores[1] = datas[i].math;
+				eachScores[2] = datas[i].eng;
+				eachScores[3] = datas[i].sci;
+
+				objResult = getPass(eachScores);
+
+				passMsg = getMessages(objResult.isPasses);
+
+				listHTML += `<div  class='row' onclick='checkResult("${passMsg}")'>`;
+				listHTML += `<span class="col">${datas[i].number}</span>`;
+				listHTML += `<span class="col">${datas[i].name}</span>`;
+				listHTML += `<span class="col">${datas[i].kor}</span>`;
+				listHTML += `<span class="col">${datas[i].math}</span>`;
+				listHTML += `<span class="col">${datas[i].eng}</span>`;
+				listHTML += `<span class="col">${datas[i].sci}</span>`;
+				listHTML += `<span class="col">${gender}</span>`;
+				listHTML += `<span class="col">${objResult.sumScore}</span>`;
+				listHTML += `<span class="col">${objResult.avgScore}</span>`;
+				listHTML += `</div>`;
+			}
+
+			document.getElementById("scoreList").innerHTML += listHTML;
+
+		}
+
+		let checkResult = function(strMsg){
+			document.getElementById("result").innerHTML = strMsg
+		}
+
+		let getPass = function(scores){
+			let objResult = {};
+
+			let sumResult = 0;
+			let isPasses = [true, true, true];
+			
+			
+
+			for(let i=0;i<scores.length;i++){
+				sumResult += parseInt(scores[i]);
+
+				if(scores[i] < 40){
+					isPasses[0] = false;
+					isPasses[1] = false;
+				}
+			}
+
+			let avgResult = sumResult / scores.length;
+
+			if(avgResult < 60){
+				isPasses[0] = false;
+				isPasses[2] = false;
+			}
+
+
+			objResult.sumScore = sumResult;
+			objResult.avgScore = avgResult;
+			objResult.isPasses = isPasses;
+
+			return objResult;
+			
+		}
+
+		let getMessages = function(isPasses){
+
+			let passMsg = "";
+			
+			if(isPasses[0]){
+				passMsg += resultMsgs[0];
+			}
+			if(!isPasses[1]){
+				passMsg += resultMsgs[1];
+			}
+			if(!isPasses[2]){
+				passMsg += resultMsgs[2];
+			}
+			
+
+			return passMsg;
+
+		}
+		
+
+	</script>
+
+
+  <title>프론트앤드 시험문제 6</title>
+ </head>
+ <body onload="">
+	<div id="scoreList">
+		<div  class="row">
+			<span class="col">아이디</span>
+			<span class="col">이름</span>
+			<span class="col">국어</span>
+			<span class="col">수학</span>
+			<span class="col">영어</span>
+			<span class="col">과학</span>
+			<span class="col">성별</span>
+			<span class="col">총점</span>
+			<span class="col">평균</span>
+		</div>
+	</div>
+	<div id="result" class="row">
+
+	</div>
+
+	<script>
+		setList();
+	</script>
+ </body>
+</html>

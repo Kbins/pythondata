@@ -1,10 +1,16 @@
 <!DOCTYPE html>
-<html lang="en">
+< lang="en">
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
+    <style>
+        body {
+            padding: 10px;
+        }
+
+    </style>
     <script>
         // window.location.href = "https://www.naver.com";
 
@@ -26,6 +32,7 @@
             document.getElementById('click').innerHTML =strHTML; 
         }
 
+        //자바스크립트 기본 객체
         let Student = {
             name:'정병윤',
             age:'27',
@@ -34,20 +41,60 @@
 
         console.log(Student.age);
 
-        console.log(JSON.stringify(Student));
+        console.log(JSON.stringify(Student)); //객체를 JSON 타입으로
         var a = JSON.stringify(Student);
-        console.log(JSON.parse(a));
+        console.log(JSON.parse(a)); //JSON을 배열로
     </script>
 </head>
-<body>
-    var - 전역변수 느낌? 어디든지
-    let - 변수 재할당 가능
-    const - 변수 재선언, 재할당이 불가능
-    이퀄이퀄 -  결과값이 같은지
-    이퀄이퀄이퀄 - 타입까지 같은지
+<br>
+    <h1>Collection</h1>
+    <div>List</div>
+    <h>순서가 있는 데이터의 집합으로, 데이터의 중복을 허용함. / ArrayList</h>
+    <div>Set</div>
+    <h>순서가 없는 데이터의 집합으로, 데이터의 중복을 허용하지 않음. / HashSet</h>
+    <div>Map</div>
+    <h>키와 값의 한 쌍으로 이루어지는 데이터의 집합으로, 순서가 없음.이때 키는 중복을 허용하지 않지만, 값은 중복될 수 있음. / HashMap</h>
 
-    Documents 종류
-    location 종류
+</br></br></br>
+
+    <h1>LIFO와FIFO</h1>
+    <div>스택(LIFO)</div>
+        후입선출로 항아리에 사과를 넣는다면 맨위부터 꺼내는 구조 
+    <div>큐(FIFO)</div>
+        선입선출 - 먼저 들어온 객체가 빠져나가는 구조
+
+    <h1> var</h1> - 중복 선언 가능  <!-- var name = 'apple';   var name = 'banana';-->
+    <h1> let</h1> - 변수 재할당 가능 <!-- let name = 'apple';  name = 'banana';--->
+    <h1> const</h1> - 변수 재선언, 재할당이 불가능 <!-- const name = 'aplle';  -->
+ 
+    <h1>이퀄이퀄 == </h1>-  결과값이 같은지
+    <h1>이퀄이퀄이퀄 ===</h1> - 타입까지 같은지
+</br></br>
+
+    <a href="https://homzzang.com/b/js-1128">홈짱컴</a>
+    <h1>Documents 종류</h1>
+    getElementById()  메서드 - 지정된 ID명(아이디명) 갖은 요소 반환.
+    </br></br>
+    getElementsByClassName() 메서드 - 지정된 ClassName(클래스명) 갖은 모든 요소를 포함한 NodeList 반환.
+    </br></br>
+
+
+    getElementsByName() 메서드 - 지정된 Name(이름) 갖는 모든 요소를 포함한 NodeLis 반환.
+    </br></br>
+    
+    getElementsByTagName() 메서드 - 지정된 TagName(태그명)의 모든 요소 포함한 NodeList 반환.
+    </br></br>
+
+    <h1>Selector</h1>
+    querySelector() 메서드 - 문서의 지정된 CSS 선택자와 일치하는 첫 번째 요소 반환. <!--첫 번째 것만 일치하면 반환-->
+    </br></br>
+    querySelectorAll() 메서드 - 문서의 지정된 CSS 선택자와 일치하는 모든 요소를 포함하는 정적 NodeList 반환.
+</br></br>
+
+    <h1>location 종류</h1>
+    <a href="https://blogpack.tistory.com/105"> location 설명 사이트</a>
+
+</br></br>    </br></br>
     <input type="button" name="naver"value="네이버" onclick="aaa()"></input>
     <div id="click"></div>
 </body>

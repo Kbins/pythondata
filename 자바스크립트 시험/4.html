@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+ <head>
+  <meta charset="UTF-8">
+
+	<style>
+
+		.row{
+			clear:both;
+			width:1200px;
+		}
+		.col{
+			width:200px;
+			padding:20px 0px 20px 0px;
+			display:block;
+			border:1px solid #333;
+			color:#444;
+			background-color:#eee;
+			float:left;
+			text-align:center;
+			font-size:40px;
+		}
+
+	</style>
+
+	<script>
+
+		/*
+			문제 4                - 15점
+			페이지가 로딩되면 아래의 selectbox에
+			서울, 부산, 대구, 광주, 대전 5개의 도시의 값이
+			모두 포함되어 나타나게 하고,
+			
+			class=row div태그 안에 포함된 5개의 box
+			에 마우스를 올리면 마우스가 올라간 box는
+			color:#eee;
+			background-color:#444;
+			로 반전되고 
+			마우스를 빼면 원상복구 되며 (color:#444;background-color:#eee;),
+			마우스가 올라간 도시의 값은 아래의 selectbox 에서도
+			선택이 되도록 해주세요
+
+
+		*/
+
+
+	let overFunc = function(check,index){
+
+		let selNames = document.getElementsByName("cities");
+
+		if(selNames[index].style.backgroundColor != "#eee"){
+			selNames[index].style.backgroundColor="#444";
+			selNames[index].style.color="#eee";
+		}
+
+		selAuto(check);
+	}
+	let outFunc = function(check,index){
+
+		let selNames = document.getElementsByName("cities");
+
+		if(selNames[index].style.backgroundColor != "#eee"){
+			selNames[index].style.backgroundColor="#eee";
+			selNames[index].style.color="#444";
+		}
+		
+	
+	}
+		
+	
+		let shoFunc = function(){
+
+		let strHTML = "";
+
+			// strHTML += "<select id='city' >";
+				strHTML += "<option value='S' >서울</option>";
+				strHTML += "<option value='P'>부산</option>";
+				strHTML += "<option value='D'>대구</option>";
+				strHTML += "<option value='G'>광주</option>";
+				strHTML += "<option value='Dae'>대전</option>";
+			// strHTML += "</select>";
+
+			document.getElementById("city").innerHTML += strHTML;
+
+		}
+
+		function selAuto(compare){
+			let spanNum =document.getElementsByTagName("span");
+			let cityName =document.getElementsByTagName("option");
+			let selName =document.getElementById("city");
+			for(i=0;i<spanNum.length;i++){
+					if(compare == spanNum[i]){
+					selName.value = cityName[i].value;
+					}
+				}
+		}
+		
+					
+	</script>
+
+
+
+  <title>프론트앤드 시험문제 4</title>
+ </head>
+ <body onload="shoFunc()">
+	<div class="row">
+		<span name="cities" class="col" onmouseover="overFunc(this,0)" onmouseout="outFunc(this,0)">1. 서울</span>
+		<span name="cities" class="col" onmouseover="overFunc(this,1)" onmouseout="outFunc(this,1)">2. 부산</span>
+		<span name="cities" class="col" onmouseover="overFunc(this,2)" onmouseout="outFunc(this,2)">3. 대구</span>
+		<span name="cities" class="col" onmouseover="overFunc(this,3)" onmouseout="outFunc(this,3)">4. 광주</span>
+		<span name="cities" class="col" onmouseover="overFunc(this,4)" onmouseout="outFunc(this,4)">5. 대전</span>
+	</div>
+	<div>
+		<select id='city' >	
+		</select>
+	</div >
+
+
+ </body>
+</html>
