@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+        const purpleCuteDog = {
+            name: '찰리',
+            attribute:'cute',
+            color: 'pink'
+        };
+
+        const cuteDog = {
+            name: '찰리',
+            attribute:'cute',
+            color: 'pink'
+
+        };
+
+        const {color, ...rest} = purpleCuteDog;
+        console.log(color);
+        console.log(rest);
+
+        //새로운 객체 생성
+        const {name, ...attribute} = cuteDog;
+        console.log(name);
+        console.log(attribute);
+
+        
+
+
+    </script>
+</head>
+<body>
+    
+</body>
+</html>
